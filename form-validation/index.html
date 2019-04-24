@@ -1,0 +1,165 @@
+<html>
+   <head>
+      <title>form</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <style>
+         body{
+         background-color: #ede7f6;
+         margin: 0;
+         }
+         .head{
+         height: 40vh;
+         background-color: rgb(103,58,183);
+         width: 100%;
+         position:absolute;
+         top: 0;
+         left: 0;
+         z-index: -1;
+         }
+         form{
+         box-shadow: 10px !important;
+         width: 50%;
+         margin: 10% auto;
+         margin-top: 10%;
+         background-color: white;
+         color:black;
+         height: auto;
+         font-family:cursive;
+         padding-bottom: 20px;
+         }
+         hr{
+         border-top-color: rgb(179, 136, 255);
+         border-right-color: rgb(179, 136, 255);
+         border-bottom-color: rgb(179, 136, 255);
+         border-left-color: rgb(179, 136, 255);
+         background-color: rgb(179, 136, 255);
+         }
+         .matter{
+         margin-left:5%;
+         margin-bottom: 5%;
+         }
+         label{
+         font-size: 20px;
+         font-weight: bold;
+         /*                margin: 10px 0; */
+         }
+         input[type=text],[type=email],[type=tel],[type=date],[type=password]{
+         border: none;
+         border-bottom-width: thin;
+         border-bottom-style: solid;
+         border-bottom-color: gainsboro;
+         height: 40px;
+         width:50%;
+         /*                color: gainsboro;*/
+         margin-bottom: 30px;
+         margin-top: 20px;
+         font-size: 20px;
+         font-weight:lighter;
+         }
+         input[type=radio]{
+         margin: 10px;
+         /*                height: 40px;*/
+         }
+         input[type="submit"]{
+         color: white;
+         background-color: rgb(103,58,183);
+         font-family: monospace;
+         font-size: 20px;
+         height:50px;
+         width:100px;
+         border-style: none;
+         border-radius: 5px;
+         }
+         .foot{
+         height: 10vh;
+         background-color: rgb(103,58,183);
+         width: 100%;
+         color:white;
+         padding-top: 20px;
+         text-align: center;
+         }
+        @media only screen and (max-width: 800px) {
+            form {
+            width: 80%;
+            }
+            .head{
+            height:20vh;
+            }
+          }
+      </style>
+   </head>
+   <body>
+      <div class="head"></div>
+      <form name="f1" onsubmit="return check()">
+         <hr noshade color="rgb(179, 136, 255)" size=7 width="100%">
+         <div class="matter">
+            <h1>Personal Info</h1>
+            <br><br>
+            <label>Name</label><br>
+            <input type="text" id="name" required><br>
+            <label>Fathers's name</label><br>
+            <input type="text" id="fname" required><br>
+            <label>University name</label><br>
+            <input type="text" id="uni" required><br>
+            <label>Branch</label><br>
+            <input type="radio" value="CSE" name="branch" id="branch">CSE<br>
+            <input type="radio" value="ME" name="branch" id="branch">ME<br>
+            <input type="radio" value="ECE" name="branch" id="branch">ECE<br>
+            <br>
+            <label>Roll No.</label><br>
+            <input type="text" id="rollno" required><br>
+            <label>Date of Birth</label><br>
+            <input type="date" id="dob" required><br>
+            <label>Contact Number</label><br>
+            <input type="text" id="phone" required><br>
+            <label>E-mail id</label><br>
+            <input type="email" id="mail" required><br>
+            <label>Chalkpad password</label><br>
+            <input id="password-field" type="password" class="form-control" name="password" required> <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password" style="margin-left: -25px;"></span><br>
+            <input type="submit" value="Submit">
+         </div>
+      </form>
+      <div class="foot">All rights reserved &copy;</div>
+      <script>
+         $(".toggle-password").click(function() {
+
+         $(this).toggleClass("fa-eye fa-eye-slash");
+         var input = $($(this).attr("toggle"));
+         if (input.attr("type") == "password") {
+         input.attr("type", "text");
+         } else {
+         input.attr("type", "password");
+         }
+         });
+       </script>
+       <script>
+       //this js func validates fields like name, father's name,email and contact number.
+          function check()
+          {
+              var a=document.getElementById("name").value;
+              var b=document.getElementById("fname").value;
+              var c=document.getElementById("phone").value;
+              var d=document.getElementById("mail").value;
+              var ex=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+              if(a.length<=2)
+                alert('enter a valid name');
+                else if (b.length<=2) {
+                  alert("father's name incorrect");
+                }
+                else if (c.length<10 ||c.length>10) {
+                  alert('enter a valid contact number!');
+                }
+                else if (!ex.test(d)) {
+                  alert('enter valid email');
+                }
+                else {
+                    alert('form submitted successfully');
+                }
+         }
+
+
+      </script>
+
+   </body>
